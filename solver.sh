@@ -27,6 +27,14 @@ for n in $(ls -1 /judge | awk -F. '$2=="in"{print$1}'); do
   if [ $? -ne 0 ]; then
     echo -ne '\x0a' >> $n.tmp
   fi
+  
+  # append LF if not exist
+  xxd /judge/$n.out -p | grep -qE "0a"
+
+  if [ $? -ne 0 ]; then
+    echo -ne '\x0a' >> /judge/$n.out
+  fi
+
 
   # check result
   cmp -s $n.tmp /judge/$n.out
