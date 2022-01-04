@@ -13,5 +13,5 @@ int main(void) {
     }
   }
   
-  printf("%d", max);
+  printf("%d\n", max);
 }
