@@ -24,7 +24,7 @@ for n in $(ls -1 /judge | awk -F. '$2=="in"{print$1}'); do
   # append LF if not exist
   xxd $n.tmp -p | grep -qE "0a"
 
-  if [ $? -eq 0 ]; then
+  if [ $? -ne 0 ]; then
     echo -ne '\x0a' >> $n.tmp
   fi
 
