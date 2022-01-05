@@ -11,7 +11,7 @@ if [ $? -ne 0 ]; then
 fi
 
 judge() {
-  su-exec solver timeout $3 /source < /judge/$1.in > /judge/$1.tmp
+  su-exec solver timeout -s 9 $3 /source < /judge/$1.in > /judge/$1.tmp
   cmp -s /judge/$1.tmp /judge/$1.out || printf "::$2:fail:test:$n::"
 }
 
